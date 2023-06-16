@@ -68,4 +68,8 @@ if [[ -n "${SSH_AUTHORIZED_KEY}" ]]; then
   unset SSH_AUTHORIZED_KEY
 fi
 
+echo "source /docker-entrypoint.sh"
+source /docker-entrypoint.sh nginx -v
+echo "source /docker-entrypoint.sh done"
+
 exec supervisord -n -c /etc/supervisor/supervisord.conf
