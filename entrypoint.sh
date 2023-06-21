@@ -18,7 +18,7 @@ if [[ -n "${SSH_HOST_RSA_KEY}" ]]; then
   chown root:root /etc/ssh/ssh_host_rsa_key
   chmod 0400 /etc/ssh/ssh_host_rsa_key
   unset SSH_HOST_RSA_KEY
-else
+elif [[ ! -f /etc/ssh/ssh_host_rsa_key ]]; then
   ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa
 fi
 
@@ -34,7 +34,7 @@ if [[ -n "${SSH_HOST_ECDSA_KEY}" ]]; then
   chown root:root /etc/ssh/ssh_host_ecdsa_key
   chmod 0400 /etc/ssh/ssh_host_ecdsa_key
   unset SSH_HOST_ECDSA_KEY
-else
+elif [[ ! -f /etc/ssh/ssh_host_ecdsa_key ]]; then
   ssh-keygen -f /etc/ssh/ssh_host_ecdsa_key -N '' -t ecdsa
 fi
 
@@ -50,7 +50,7 @@ if [[ -n "${SSH_HOST_ED25519_KEY}" ]]; then
   chown root:root /etc/ssh/ssh_host_ed25519_key
   chmod 0400 /etc/ssh/ssh_host_ed25519_key
   unset SSH_HOST_ED25519_KEY
-else
+elif [[ ! -f /etc/ssh/ssh_host_ed25519_key ]]; then
   ssh-keygen -f /etc/ssh/ssh_host_ed25519_key -N '' -t ed25519
 fi
 
