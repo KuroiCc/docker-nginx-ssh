@@ -9,7 +9,8 @@ RUN apt-get update && \
   supervisor && \
   apt-get clean && \
   rm -rvf /var/lib/apt/lists/* && \
-  rm -vf /etc/ssh/ssh_host_*
+  rm -vf /etc/ssh/ssh_host_* && \
+  echo "CASignatureAlgorithms +ssh-rsa" > /etc/ssh/sshd_config.d/allows_rsa_sha1.conf
 
 RUN useradd -s /bin/sh publisher -d /home/publisher -m && \
   mkdir -p /run/sshd /home/publisher/.ssh && \
